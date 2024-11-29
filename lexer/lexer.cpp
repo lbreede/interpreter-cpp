@@ -14,60 +14,60 @@ Token Lexer::nextToken() {
         case '=':
             if (peekChar() == '=') {
                 readChar();
-                token.type = EQ;
+                token.type = TokenType::Eq;
                 token.literal = "==";
             } else {
-                token = newToken(ASSIGN, ch);
+                token = newToken(TokenType::Assign, ch);
             }
             break;
         case '+':
-            token = newToken(PLUS, ch);
+            token = newToken(TokenType::Plus, ch);
             break;
         case '-':
-            token = newToken(MINUS, ch);
+            token = newToken(TokenType::Minus, ch);
             break;
         case '!':
             if (peekChar() == '=') {
                 readChar();
-                token.type = NOT_EQ;
+                token.type = TokenType::NotEq;
                 token.literal = "!=";
             } else {
-                token = newToken(BANG, ch);
+                token = newToken(TokenType::Bang, ch);
             }
             break;
         case '*':
-            token = newToken(ASTERISK, ch);
+            token = newToken(TokenType::Asterisk, ch);
             break;
         case '/':
-            token = newToken(SLASH, ch);
+            token = newToken(TokenType::Slash, ch);
             break;
         case '<':
-            token = newToken(LT, ch);
+            token = newToken(TokenType::Lt, ch);
             break;
         case '>':
-            token = newToken(GT, ch);
+            token = newToken(TokenType::Gt, ch);
             break;
         case ';':
-            token = newToken(SEMICOLON, ch);
+            token = newToken(TokenType::Semicolon, ch);
             break;
         case ',':
-            token = newToken(COMMA, ch);
+            token = newToken(TokenType::Comma, ch);
             break;
         case '(':
-            token = newToken(LPAREN, ch);
+            token = newToken(TokenType::LParen, ch);
             break;
         case ')':
-            token = newToken(RPAREN, ch);
+            token = newToken(TokenType::RParen, ch);
             break;
         case '{':
-            token = newToken(LBRACE, ch);
+            token = newToken(TokenType::LBrace, ch);
             break;
         case '}':
-            token = newToken(RBRACE, ch);
+            token = newToken(TokenType::RBrace, ch);
             break;
         case 0:
             token.literal = "";
-            token.type = END_OF_FILE;
+            token.type = TokenType::Eof;
             break;
         default:
             if (isalpha(ch) || ch == '_') {
@@ -76,10 +76,10 @@ Token Lexer::nextToken() {
                 return token;
             } else if (isdigit(ch)) {
                 token.literal = readNumber();
-                token.type = INT;
+                token.type = TokenType::Int;
                 return token;
             } else {
-                token = newToken(ILLEGAL, ch);
+                token = newToken(TokenType::Illegal, ch);
             }
     }
     readChar();

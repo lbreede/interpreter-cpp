@@ -6,39 +6,39 @@
 #include <unordered_map>
 
 enum TokenType {
-    ILLEGAL,
-    END_OF_FILE,
+    Illegal,
+    Eof,
 
-    IDENT,
-    INT,
+    Ident,
+    Int,
 
-    ASSIGN,
-    PLUS,
-    MINUS,
-    BANG,
-    ASTERISK,
-    SLASH,
+    Assign,
+    Plus,
+    Minus,
+    Bang,
+    Asterisk,
+    Slash,
 
-    LT,
-    GT,
-    EQ,
-    NOT_EQ,
+    Lt,
+    Gt,
+    Eq,
+    NotEq,
 
-    COMMA,
-    SEMICOLON,
+    Comma,
+    Semicolon,
 
-    LPAREN,
-    RPAREN,
-    LBRACE,
-    RBRACE,
+    LParen,
+    RParen,
+    LBrace,
+    RBrace,
 
-    FUNCTION,
-    LET,
-    TRUE,
-    FALSE,
-    IF,
-    ELSE,
-    RETURN,
+    Function,
+    Let,
+    True,
+    False,
+    If,
+    Else,
+    Return,
 };
 
 std::ostream &operator<<(std::ostream &os, const TokenType &type);

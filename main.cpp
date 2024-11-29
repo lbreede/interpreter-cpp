@@ -1,13 +1,27 @@
+#include <pwd.h>
+#include <repl.h>
+#include <unistd.h>
+
 #include <iostream>
 
-#include "lexer.h"
+std::string getCurrentUsername() {
+    struct passwd* pw;
+    uid_t uid = geteuid();
+    pw = getpwuid(uid);
+    if (pw) {
+        return std::string(pw->pw_name);
+    }
+    return "unknown";
+}
 
 int main() {
-    Lexer lexer("let _foo = 5;");
-    Token token = lexer.nextToken();
-    while (token.type != END_OF_FILE) {
-        std::cout << token << std::endl;
-        token = lexer.nextToken();
+    std::string username = getCurrentUsername();
+    if (username == "unknown") {
+        std::cerr << "Could not get current username\n";
+        return 1;
     }
+    std::cout << "Hello " << username << "! This is the Monkey programming language!\n";
+    std::cout << "Feel free to type in commands\n";
+    start();
     return 0;
 }

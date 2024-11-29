@@ -8,10 +8,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/lexer
     ${CMAKE_CURRENT_SOURCE_DIR}/token
+    ${CMAKE_CURRENT_SOURCE_DIR}/repl
 )
 
 add_executable(main
     main.cpp
     lexer/lexer.cpp
     token/token.cpp
+    repl/repl.cpp
 )

@@ -1,104 +1,107 @@
 #include "token.h"
 
 std::unordered_map<std::string, TokenType> keywords = {
-    {"fn", FUNCTION},
-    {"let", LET},
-    {"true", TRUE},
-    {"false", FALSE},
-    {"if", IF},
-    {"else", ELSE},
-    {"return", RETURN},
+    {"fn", TokenType::Function},
+    {"let", TokenType::Let},
+    {"true", TokenType::True},
+    {"false", TokenType::False},
+    {"if", TokenType::If},
+    {"else", TokenType::Else},
+    {"return", TokenType::Return},
 };
 
 TokenType lookupIdent(const std::string &ident) {
     if (keywords.find(ident) != keywords.end()) {
         return keywords[ident];
     }
-    return IDENT;
+    return TokenType::Ident;
 }
 
 std::ostream &operator<<(std::ostream &os, const TokenType &type) {
     switch (type) {
-        case ILLEGAL:
-            os << "ILLEGAL";
+        case TokenType::Illegal:
+            os << "Illegal";
             break;
-        case END_OF_FILE:
-            os << "EOF";
+        case TokenType::Eof:
+            os << "Eof";
             break;
-        case IDENT:
-            os << "IDENT";
+        case TokenType::Ident:
+            os << "Ident";
             break;
-        case INT:
-            os << "INT";
+        case TokenType::Int:
+            os << "Int";
             break;
-        case ASSIGN:
-            os << "ASSIGN";
+        case TokenType::Assign:
+            os << "Assign";
             break;
-        case PLUS:
-            os << "PLUS";
+        case TokenType::Plus:
+            os << "Plus";
             break;
-        case MINUS:
-            os << "MINUS";
+        case TokenType::Minus:
+            os << "Minus";
             break;
-        case BANG:
-            os << "BANG";
+        case TokenType::Bang:
+            os << "Bang";
             break;
-        case ASTERISK:
-            os << "ASTERISK";
+        case TokenType::Asterisk:
+            os << "Asterisk";
             break;
-        case SLASH:
-            os << "SLASH";
+        case TokenType::Slash:
+            os << "Slash";
             break;
-        case LT:
-            os << "LT";
+        case TokenType::Lt:
+            os << "Lt";
             break;
-        case GT:
-            os << "GT";
+        case TokenType::Gt:
+            os << "Gt";
             break;
-        case EQ:
-            os << "EQ";
+        case TokenType::Eq:
+            os << "Eq";
             break;
-        case NOT_EQ:
-            os << "NOT_EQ";
+        case TokenType::NotEq:
+            os << "NotEq";
             break;
-        case COMMA:
-            os << "COMMA";
+        case TokenType::Comma:
+            os << "Comma";
             break;
-        case SEMICOLON:
-            os << "SEMICOLON";
+        case TokenType::Semicolon:
+            os << "Semicolon";
             break;
-        case LPAREN:
-            os << "LPAREN";
+        case TokenType::LParen:
+            os << "LParen";
             break;
-        case RPAREN:
-            os << "RPAREN";
+        case TokenType::RParen:
+            os << "RParen";
             break;
-        case LBRACE:
-            os << "LBRACE";
+        case TokenType::LBrace:
+            os << "LBrace";
             break;
-        case RBRACE:
-            os << "RBRACE";
+        case TokenType::RBrace:
+            os << "RBrace";
             break;
-        case FUNCTION:
-            os << "FUNCTION";
+        case TokenType::Function:
+            os << "Function";
             break;
-        case LET:
-            os << "LET";
+        case TokenType::Let:
+            os << "Let";
             break;
-        case TRUE:
-            os << "TRUE";
+        case TokenType::True:
+            os << "True";
             break;
-        case FALSE:
-            os << "FALSE";
+        case TokenType::False:
+            os << "False";
             break;
-        case IF:
-            os << "IF";
+        case TokenType::If:
+            os << "If";
             break;
-        case ELSE:
-            os << "ELSE";
+        case TokenType::Else:
+            os << "Else";
             break;
-        case RETURN:
-            os << "RETURN";
+        case TokenType::Return:
+            os << "Return";
+            break;
+        default:
+            os << "Unhandled";
             break;
     }
     return os;
